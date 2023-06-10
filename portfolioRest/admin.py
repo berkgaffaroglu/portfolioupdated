@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Project, ProjectImage, Contact, GeneralInformation,CertificateImage
+from .models import Project, ProjectImage, Contact, GeneralInformation,CertificateImage, Resume, Account
 # Register your models here.
 
 class ProjectImageAdmin(admin.StackedInline):
@@ -15,15 +15,18 @@ class ProjectAdmin(admin.ModelAdmin):
 class PostImageAdmin(admin.ModelAdmin):
     pass
 
-
+admin.site.register(Resume)
 
 
 class CertificateImageAdmin(admin.StackedInline):
     model = CertificateImage
 
+class AccountAdmin(admin.StackedInline):
+    model = Account
+
 @admin.register(GeneralInformation)
 class GeneralInformationAdmin(admin.ModelAdmin):
-    inlines = [CertificateImageAdmin]
+    inlines = [CertificateImageAdmin, AccountAdmin]
     class Meta:
         model= GeneralInformation
 

@@ -33,9 +33,11 @@ export class Certificate extends Component {
         return (`${this.props.websiteUrl}/api` + imageUrl)
     }
     render() {
-
+        
         if (this.state.Render) {
+            var data = this.state.data[0][0]
             const images_array = this.state.data[1]
+
             if (images_array) {
 
                 const images = images_array.map((img, index) =>
@@ -59,7 +61,7 @@ export class Certificate extends Component {
                     </Carousel>
                    </div>
                    
-                   <p className="text-center mb-5" style={{fontSize:"20px"}}><MdStars/> <a href="https://www.upwork.com/" rel="noopener noreferrer" target="_blank"><strong className="text-success">Upwork</strong></a> sitesi bir uzaktan çalışma servisidir. Gördüğünüz sertifika ise kesin kazanç göstergesidir. Verdiğim yazılım hizmeti karşılığında <strong>120$</strong> kazandığımı göstermektedir. <a href="https://www.udemy.com/" rel="noopener noreferrer" target="_blank"><strong className="text-danger">Udemy</strong></a> sertifikalarıysa tamamladığım kursların göstergesidir.</p>
+                   <p className=" mb-5" style={{fontSize:"20px"}}><MdStars/> <a href={data.upwork} rel="noopener noreferrer" target="_blank"><strong className="text-success">Upwork</strong></a> sitesi bir uzaktan çalışma servisidir. Gördüğünüz sertifika ise kesin kazanç göstergesidir. Verdiğim yazılım hizmeti karşılığında <strong>120$</strong> kazandığımı göstermektedir. <a href="https://www.udemy.com/" rel="noopener noreferrer" target="_blank"><strong className="text-danger">Udemy</strong></a> sertifikalarıysa tamamladığım kursların göstergesidir. Upwork hesabıma <a rel="noopener noreferrer" target="_blank" href={data.upwork}>buraya</a> tıklayıp ulaşabilirsiniz.</p> 
                     
                     </>
 

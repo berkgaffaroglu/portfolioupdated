@@ -27,6 +27,7 @@ class Project(models.Model):
     github_repository = models.CharField(max_length=100, blank=True, null=True)
     content = models.TextField()
     created_on = models.DateTimeField(auto_now_add=True)
+    document = models.FileField(blank=True, upload_to='documents/')
 
     def __str__(self):
         return self.title
@@ -65,7 +66,21 @@ class GeneralInformation(models.Model):
     github_link = models.CharField(null=True, blank=True, max_length=255)
     twitter = models.CharField(null=True, blank=True, max_length=255)
     linkedin = models.CharField(null=True, blank=True, max_length=255)
+    upwork = models.CharField(null=True, blank=True, max_length=255, default="")
     image = models.ImageField(blank=True, upload_to='images/')
+
+
+    slide1 = models.FileField(blank=True, upload_to='sliders/')
+    slide2 = models.FileField(blank=True, upload_to='sliders/')
+    slide3 = models.FileField(blank=True, upload_to='sliders/')
+    slide4 = models.FileField(blank=True, upload_to='sliders/')
+    slide5 = models.FileField(blank=True, upload_to='sliders/')
+
+    slide1_href = models.CharField(null=True, blank=True, max_length=255)
+    slide2_href = models.CharField(null=True, blank=True, max_length=255)
+    slide3_href = models.CharField(null=True, blank=True, max_length=255)
+    slide4_href = models.CharField(null=True, blank=True, max_length=255)
+    slide5_href = models.CharField(null=True, blank=True, max_length=255)
     
     # Serialize this model.
 
@@ -73,6 +88,24 @@ class GeneralInformation(models.Model):
         return "General Info"
 
 
+
 class CertificateImage(models.Model):
     project = models.ForeignKey(GeneralInformation, default=None, on_delete=models.CASCADE)
     image = models.ImageField(upload_to='images/')
+
+
+class Account(models.Model):
+    info = models.ForeignKey(GeneralInformation, default=None, on_delete=models.CASCADE)
+    image = models.ImageField(upload_to='images/')
+    url = models.CharField(null=True, blank=True, max_length=255)
+    
+
+class Resume(models.Model):
+
+    image = models.FileField(upload_to='resume/')
+    pdf = models.FileField(upload_to='resume/')
+    
+    # Serialize this model.
+
+    def __str_(self):
+        return "Resume"

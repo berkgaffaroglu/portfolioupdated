@@ -57,11 +57,12 @@ export class FetchDetails extends Component {
             imageUrl = imageUrl.split(websiteUrl)[1]
             return (`${websiteUrl}/api${imageUrl}`)
         }
+        
         var Project = this.state.project
 
 
         if (this.state.Render) {
-            const { frontend_category, backend_category, image, title, content, live_server, github_repository } = Project[0]
+            const { frontend_category, backend_category, image, title, content, live_server, github_repository, document } = Project[0]
             /* Mapping the extra images in the project for the carousel.*/
             var projectImageArray = this.state.project[1]
             if (projectImageArray) {
@@ -132,6 +133,19 @@ export class FetchDetails extends Component {
                                     <p><TiCancel /> Yok</p>
                                 }
                             </h3>
+                            {document != null
+                            ?
+                            <h3 class="lead ml-4">
+                                <p className="details-header"><b>Dökümantasyon: </b></p>
+                                
+                                    
+                                    <a className="" target="_blank" rel="noopener noreferrer" href={this.props.websiteUrl+'/api'+document} download><span className="text-danger"><AiOutlineLink/> Belgeye Git</span></a>
+                                    
+                                
+                            </h3>
+                            :
+                            <span></span>
+                            }
                         </div>
                     </div>
                 )

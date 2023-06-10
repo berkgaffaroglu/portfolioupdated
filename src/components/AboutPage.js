@@ -7,7 +7,7 @@ class AboutPage extends Component {
         return (
             <div>
                 <About websiteUrl={this.props.websiteUrl}/>
-                <Resume />
+                <Resume websiteUrl={this.props.websiteUrl} />
             </div>
         );
     }

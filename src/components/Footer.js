@@ -5,7 +5,7 @@ function Footer(props) {
     
     return (
         
-        <footer style={{ backgroundColor: "#02203c"}} className={"footer text-white text-center p-4 animate__delay-5s animate__animated animate__fadeOut " + props.sticky}>
+        <footer style={{ backgroundColor: "#02203c"}} className={"footer text-white text-center p-4 animate__delay-2s animate__animated animate__fadeIn " + props.sticky}>
             <div>
                 <span style={{fontSize:"22px"}}>Berk Hüseyin Gaffaroğlu © 2021 Tüm Hakları Saklıdır.
                 </span>

@@ -13,6 +13,7 @@ import fourth from "../images/sliders/4.png"
 import fifth from "../images/sliders/5.png"
 import linkedin from "../LinkedIn.png"
 import github from "../git.png"
+import upwork from '../upwork.png'
 import stackoverflow from "../stackoverflow.png"
 import resume from "../resume.png"
 import { Carousel } from 'react-bootstrap'
@@ -36,6 +37,7 @@ export class Home extends Component {
     }
 
     async fetchAll() {
+        
         var generalInfoResponse = await (fetch(`${this.props.websiteUrl}/api/general-information/`))
         var data = await generalInfoResponse.json()
         var projectResponse = await (fetch(`${this.props.websiteUrl}/api/project-list/`))
@@ -48,57 +50,88 @@ export class Home extends Component {
 
 
     }
-
+    
     render() {
+        function urlImage(imageUrl) {
+            imageUrl = imageUrl.split(websiteUrl)[1]
+            return (`${websiteUrl}/api${imageUrl}`)
+        }
         var projects = this.state.projectList
         const websiteUrl = this.props.websiteUrl
         
         if (this.state.Render) {
             var data = this.state.data[0][0]
-
+            const accountsArray = this.state.data[2]
+            
+            if (accountsArray) {
+                const accounts = accountsArray.map((account, index) => (
+                  <div className="col-lg-4 col-md-6 col-sm-12 mb-3 mt-3">
+                    <a
+                      href={account.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn btn-sm btn-outline-light"
+                      onMouseOver={(e) => {
+                        e.target.style.boxShadow = '0 0 10px rgba(0, 0, 0, 1)';
+                        e.target.style.transition = 'box-shadow 0.2s ease';
+                      }}
+                      onMouseOut={(e) => {
+                        e.target.style.boxShadow = 'none';
+                        e.target.style.transition = 'box-shadow 0.2s ease';
+                      }}
+                    >
+                      <img src={this.props.websiteUrl+'/api'+account.image} className="img-fluid social-media-button" />
+                    </a>
+                  </div>
+                ));
+              
             return (
+
                 <div className="text-dark text-center" style={{ backgroundColor: "white" }}>
+                  
                     <Carousel className="mb-5 slides animate__animated animate__fadeIn">
                         <Carousel.Item>
+                        <a href={data.slide1_href} rel="noopener noreferrer" target="_blank">
                             <img
                                 className="d-block w-100"
-                                src={first}
+                                src= {this.props.websiteUrl+'/api'+data.slide1}
                                 alt="First"
                             />
+                        </a>
 
                         </Carousel.Item>
                         <Carousel.Item>
-                            <a href="http://memorychallange.herokuapp.com/" rel="noopener noreferrer" target="_blank">
+                            <a href={data.slide2_href} rel="noopener noreferrer" target="_blank">
                                 <img
                                     className="d-block w-100"
-                                    src={second}
+                                    src= {this.props.websiteUrl+'/api'+data.slide2}
                                     alt="Memorychallange"
                                 />
                             </a>
                         </Carousel.Item>
                         <Carousel.Item>
-                            <a href="https://github.com/berkgaffaroglu/portfolio" rel="noopener noreferrer" target="_blank">
+                            <a href={data.slide3_href} rel="noopener noreferrer" target="_blank">
                                 <img
                                     className="d-block w-100"
-                                    src={third}
+                                    src= {this.props.websiteUrl+'/api'+data.slide3}
                                     alt="Portfolio"
                                 />
                             </a>
                         </Carousel.Item>
                         <Carousel.Item>
-                            <a href="http://nasaapiproject.herokuapp.com/" rel="noopener noreferrer" target="_blank">
+                            <a href={data.slide4_href} rel="noopener noreferrer" target="_blank">
                                 <img
                                     className="d-block w-100"
-                                    src={fourth}
+                                    src= {this.props.websiteUrl+'/api'+data.slide4}
                                     alt="Nasa API Project"
                                 />
                             </a>
                         </Carousel.Item>
                         <Carousel.Item>
-                            <a href="http://ebayscraperapp.herokuapp.com/" rel="noopener noreferrer" target="_blank">
+                            <a href={data.slide5_href} rel="noopener noreferrer" target="_blank">
                                 <img
                                     className="d-block w-100"
-                                    src={fifth}
+                                    src= {this.props.websiteUrl+'/api'+data.slide5}
                                     alt="Ebayscraperapp"
                                 />
                             </a>
@@ -109,31 +142,14 @@ export class Home extends Component {
                     </div>
                     <div className="resumeSection animate__animated animate__fadeInUp">
                     
-                        <Resume />
+                        <Resume websiteUrl={this.props.websiteUrl} />
 
                     </div>
                     <div className="mediaAccounts animate__animated animate__fadeInUp mb-5 mt-5 animate__delay-1s">
                         <h3 className="text-center text-uppercase"><RiAccountPinCircleLine /> <strong>hesaplarım</strong></h3>
                         <hr className="separator" />
                         <div className="row text-center">
-
-                            <div className="col-lg-4 col-md-6 col-sm-12 mb-3 mt-3">
-                                <a href={data.linkedin} target="_blank" rel="noopener noreferrer" className="btn btn-sm btn-outline-light">
-                                    <img src={linkedin} className="img-fluid social-media-button" />
-                                </a>
-
-                            </div>
-                            <div className="col-lg-4 col-md-6 col-sm-12 mb-3 mt-3">
-                                <a href={data.github_link} target="_blank" rel="noopener noreferrer" className="btn btn-outline-light">
-                                    <img src={github} className="img-fluid social-media-button" />
-                                </a>
-                            </div>
-
-                            <div className="col-lg-4 col-md-6 col-sm-12 mb-3 mt-3">
-                                <a href={data.stackoverflow_link} target="_blank" rel="noopener noreferrer" className="btn btn-outline-light">
-                                    <img src={stackoverflow} className="img-fluid social-media-button" />
-                                </a>
-                            </div>
+                        {accountsArray ? accounts : <span></span>}
                         </div>
                     </div>
                     <div className="certificates animate__animated animate__fadeInUp mb-5 mt-5 animate__delay-1s">
@@ -175,6 +191,7 @@ export class Home extends Component {
 
                 </div>
             )
+        }
         }
         else { return (<CustomSpinner />) }
     }

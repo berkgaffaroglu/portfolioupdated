@@ -2,8 +2,8 @@ from django.shortcuts import render
 from django.http import JsonResponse, HttpResponse
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from .models import Project, ProjectImage, GeneralInformation, CertificateImage
-from .serializers import ProjectSerializer, ProjectImageSerializer, ContactSerializer, GeneralInformationSerializer,CertificateImageSerializer
+from .models import Project, ProjectImage, GeneralInformation, CertificateImage, Resume, Account
+from .serializers import ProjectSerializer, ProjectImageSerializer, ContactSerializer, GeneralInformationSerializer,CertificateImageSerializer,ResumeSerializer, AccountSerializer
 # Create your views here.
 
 
@@ -29,10 +29,16 @@ def generalInformation(request):
     infoSerializer = GeneralInformationSerializer(info, many=True, context=context)
     certificateImage = CertificateImage.objects.all()
     certificateImageSerializer = CertificateImageSerializer(certificateImage, many=True, context=context)
+    
+    accounts = Account.objects.all()
+    accountSerializer = AccountSerializer(accounts, many=True, context= context)
+    
     parentList.append(infoSerializer.data)
     parentList.append(certificateImageSerializer.data)
+    parentList.append(accountSerializer.data)
 
 
+   
     return Response(parentList)
 
 
@@ -69,6 +75,12 @@ def searchProjects(request, keyword):
     projects = projectsTitle.union(projectsFrontend, all=False)
     projects = projects.union(projectsBackend, all=False)
     serializer = ProjectSerializer(projects, many=True)
+    return Response(serializer.data)
+
+@api_view(['GET'])
+def getResume(request):
+    resume = Resume.objects.all()[0]
+    serializer = ResumeSerializer(resume)
     return Response(serializer.data)
 
 @api_view(['POST'])

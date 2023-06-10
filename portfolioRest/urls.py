@@ -11,7 +11,9 @@ urlpatterns = [
     path('project-detail/<slug:slug>', views.projectDetail, name="project-detail"),
     path('search/<str:keyword>', views.searchProjects, name='search-projects'),
     path('contact/', views.Contact, name='contact'),
-    path('general-information/', views.generalInformation, name='general-information')
+    path('general-information/', views.generalInformation, name='general-information'),
+    path('get-resume/', views.getResume, name='get-resume')
+
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 if not settings.DEBUG: urlpatterns += [ re_path(r'^uploads/(?P<path>.)$', serve,{'document_root': settings.MEDIA_ROOT}), re_path(r'^static/(?P<path>.)$', serve,{'document_root': settings.STATIC_ROOT}), ]

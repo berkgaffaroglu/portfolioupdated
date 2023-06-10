@@ -13,15 +13,15 @@ import Certificate from './components/Certificates';
 import AboutPage from './components/AboutPage';
 var animateCss = require("animate.css")
 function App() {
-  var DEBUG = true;
+  var DEBUG = false;
   var HTTPS;
   var websiteUrl;
-  if (DEBUG) {
-    websiteUrl = 'http://127.0.0.1:8000'
-  } else {
-    websiteUrl = 'https://berkgaffaroglu.pythonanywhere.com'
+  if(DEBUG) {
+  /*No '/' at the end */ 
+  websiteUrl = 'http://127.0.0.1:8000'
+  }else {
+  websiteUrl = 'https://berkgaffaroglu.pythonanywhere.com'
   }
-
   return (
     <Router>
       <div className="App">

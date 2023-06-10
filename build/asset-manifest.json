@@ -1,19 +1,19 @@
 {
   "files": {
     "main.css": "/static/css/main.9054b18e.chunk.css",
-    "main.js": "/static/js/main.074ddec0.chunk.js",
-    "main.js.map": "/static/js/main.074ddec0.chunk.js.map",
+    "main.js": "/static/js/main.b7e7f4ec.chunk.js",
+    "main.js.map": "/static/js/main.b7e7f4ec.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.3717989d.js",
     "runtime-main.js.map": "/static/js/runtime-main.3717989d.js.map",
     "static/css/2.5fa572d6.chunk.css": "/static/css/2.5fa572d6.chunk.css",
-    "static/js/2.fc7af6ed.chunk.js": "/static/js/2.fc7af6ed.chunk.js",
-    "static/js/2.fc7af6ed.chunk.js.map": "/static/js/2.fc7af6ed.chunk.js.map",
+    "static/js/2.d3d2b6c0.chunk.js": "/static/js/2.d3d2b6c0.chunk.js",
+    "static/js/2.d3d2b6c0.chunk.js.map": "/static/js/2.d3d2b6c0.chunk.js.map",
     "index.html": "/index.html",
-    "precache-manifest.bc4974b35603f7506318e3ca1f7d9c48.js": "/precache-manifest.bc4974b35603f7506318e3ca1f7d9c48.js",
+    "precache-manifest.d2d2a17f1904a6dc73d9b8345eee71d7.js": "/precache-manifest.d2d2a17f1904a6dc73d9b8345eee71d7.js",
     "service-worker.js": "/service-worker.js",
     "static/css/2.5fa572d6.chunk.css.map": "/static/css/2.5fa572d6.chunk.css.map",
     "static/css/main.9054b18e.chunk.css.map": "/static/css/main.9054b18e.chunk.css.map",
-    "static/js/2.fc7af6ed.chunk.js.LICENSE.txt": "/static/js/2.fc7af6ed.chunk.js.LICENSE.txt",
+    "static/js/2.d3d2b6c0.chunk.js.LICENSE.txt": "/static/js/2.d3d2b6c0.chunk.js.LICENSE.txt",
     "static/media/1.png": "/static/media/1.a9395489.png",
     "static/media/2.png": "/static/media/2.e3df5032.png",
     "static/media/3.png": "/static/media/3.7908d4b2.png",
@@ -24,13 +24,14 @@
     "static/media/git.png": "/static/media/git.298f9370.png",
     "static/media/resume.png": "/static/media/resume.902eac34.png",
     "static/media/resume.pdf": "/static/media/resume.eed3a2b1.pdf",
-    "static/media/stackoverflow.png": "/static/media/stackoverflow.aa028664.png"
+    "static/media/stackoverflow.png": "/static/media/stackoverflow.aa028664.png",
+    "static/media/upwork.png": "/static/media/upwork.73e9655a.png"
   },
   "entrypoints": [
     "static/js/runtime-main.3717989d.js",
     "static/css/2.5fa572d6.chunk.css",
-    "static/js/2.fc7af6ed.chunk.js",
+    "static/js/2.d3d2b6c0.chunk.js",
     "static/css/main.9054b18e.chunk.css",
-    "static/js/main.074ddec0.chunk.js"
+    "static/js/main.b7e7f4ec.chunk.js"
   ]
 }
