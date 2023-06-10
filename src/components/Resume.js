@@ -43,7 +43,7 @@ class Resume extends Component {
 
                     <DropdownButton variant="outline-info btn-lg" style={{float:"right", zIndex: "10"}} title="Özgeçmişimi İndir">
                         <Dropdown.Item href={this.props.websiteUrl+'/api'+data.pdf} rel="noopener noreferrer" download>.PDF</Dropdown.Item>
-                        <Dropdown.Item href={this.props.websiteUrl+'/api'+data.png} rel="noopener noreferrer" download>.PNG</Dropdown.Item>
+                        <Dropdown.Item href={this.props.websiteUrl+'/api'+data.image} rel="noopener noreferrer" download>.PNG</Dropdown.Item>
 
                     </DropdownButton>
                     <img src={this.props.websiteUrl+'/api'+data.image} className="img-fluid"/>
